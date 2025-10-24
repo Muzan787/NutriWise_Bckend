@@ -1,5 +1,4 @@
 # requirements.txt
-tensorflow-cpu
 numpy
 Pillow
 pyzbar

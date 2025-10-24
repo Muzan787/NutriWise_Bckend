@@ -6,7 +6,6 @@ node_modules
 
 # Ignore local models (we download them in the container)
 models/
-*.h5
 *.pt
 *.dat
 

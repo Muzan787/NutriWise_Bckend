@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch server.js",
     "start": "node index.js",
-    "postinstall": "echo 'Downloading models...' && curl -c cookies1.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" > /dev/null && curl -b cookies1.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" -o yolo_fruits_and_vegetables_v3.pt && rm cookies1.txt && echo 'YOLO model downloaded.' && curl -c cookies2.txt -L \"https://drive.google.com/uc?export=download&id=1C44mmPYPZXTgSX5_eDGQ9BlkyrZDfGS0\" > /dev/null && curl -b cookies2.txt -L \"https://drive.google.com/uc?export=download&id=1C44mmPYPZXTgSX5_eDGQ9BlkyrZDfGS0\" -o mobilenetv2_food101.h5 && rm cookies2.txt && echo 'MobileNet model downloaded. All models ready.'"
+    "postinstall": "echo 'Downloading models...' && curl -c cookies1.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" > /dev/null && curl -b cookies1.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" -o yolo_fruits_and_vegetables_v3.pt && rm cookies1.txt && echo 'YOLO model downloaded.'"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^4.19.2",
+    "form-data": "^4.0.4",
     "jpeg-js": "^0.4.4",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.0",
