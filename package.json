@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch server.js",
-    "start": "node index.js",
-    "postinstall": "echo 'Downloading models...' && curl -c cookies1.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" > /dev/null && curl -b cookies1.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" -o yolo_fruits_and_vegetables_v3.pt && rm cookies1.txt && echo 'YOLO model downloaded.'"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
