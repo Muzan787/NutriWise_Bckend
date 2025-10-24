@@ -1,18 +1,25 @@
 # 1. Start with a official Node.js 18 image
 FROM node:18-slim
 
-# 2. Install Python, pip, and other system tools
+# 2. Install Python, pip, and venv tools
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
+    python3-venv \
     git \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-# 3. Set up the Python environment (This layer will be cached)
-# Copy requirements first to leverage caching
+# 3. Set up the Python environment (FIXED SECTION)
+# Create a virtual environment in /opt/venv
+RUN python3 -m venv /opt/venv
+# Add the venv's bin directory to the system's PATH
+# This makes `python` and `pip` use the venv's versions
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Copy requirements and install into the venv (This layer will be cached)
 COPY requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # 4. Set up the Node.js environment
 WORKDIR /app
