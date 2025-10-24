@@ -9,27 +9,30 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     --no-install-recommends && \
+    # Clean up apt cache
     rm -rf /var/lib/apt/lists/*
 
 # 3. Set up the Python environment
-# Create a virtual environment in /opt/venv
 RUN python3 -m venv /opt/venv
-# Add the venv's bin directory to the system's PATH
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Copy requirements and install into the venv (This layer will be cached)
+# Copy requirements and install into the venv, then clean up pip cache
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && \
+    # Clean up pip cache
+    rm -rf /root/.cache/pip
 
 # 4. Set up the Node.js environment
 WORKDIR /app
-# Copy package files first to leverage caching
 COPY package.json package-lock.json ./
-RUN npm install --omit=dev
+# Run install, which also runs postinstall, then clean up npm cache
+RUN npm install --omit=dev && \
+    # Clean up npm cache
+    npm cache clean --force && \
+    rm -rf /root/.npm/_logs
 
-# 5. Copy the rest of your application code
+# 5. Copy the rest of your application code (now very fast due to .dockerignore)
 COPY . .
 
 # 6. Define the start command
-# This tells Railway to run "node server.js"
 CMD ["node", "server.js"]
