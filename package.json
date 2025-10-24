@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch server.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "mkdir -p ./models && curl -c cookies.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" > /dev/null && curl -b cookies.txt -L \"https://drive.google.com/uc?export=download&id=1C_aDCd-tA96CrSRCOYuTVtUVtgiSLvL2\" -o ./models/my_model.dat && rm cookies.txt"
+
   },
   "keywords": [],
   "author": "",
