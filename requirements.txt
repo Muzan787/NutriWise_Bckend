@@ -1,0 +1,9 @@
+# requirements.txt
+tensorflow
+numpy
+Pillow
+pyzbar
+pytesseract
+ultralytics
+aiohttp
+requests
